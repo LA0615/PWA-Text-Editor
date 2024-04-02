@@ -17,7 +17,7 @@ module.exports = () => {
     //Added and configured workbox plugins for a service worker and manifest file.
     plugins: [
       new HtmlWebpackPlugin({
-        template: "./src/index.html",
+        template: "./index.html",
         filename: "index.html",
       }),
       new WebpackPwaManifest({
@@ -30,16 +30,16 @@ module.exports = () => {
         start_url: "/",
         icons: [
           {
-            src: path.resolve("src/icons/icon-192x192.png"),
-            sizes: [96, 144, 192, 512, 180],
-            destination: path.join("icons"),
+            src: path.resolve("src/images/logo.png"),
+            sizes: [96, 128, 192, 256, 384, 512],
+            destination: path.join("assets", "icons"),
           },
         ],
       }),
 
       new InjectManifest({
         swSrc: "./src-sw.js",
-        swDest: "sw.js",
+        swDest: "src-sw.js",
       }),
     ],
     //  Added CSS loaders and babel to webpack.
@@ -47,14 +47,17 @@ module.exports = () => {
     module: {
       rules: [
         {
-          loader: "babel-loader",
           test: /\.js$/,
           exclude: /node_modules/,
           use: {
+            loader: "babel-loader",
             options: {
               presets: ["@babel/preset-env"],
+              plugins: [
+                "@babel/plugin-proposal-object-rest-spread",
+                "@babel/transform-runtime",
+              ],
             },
-            loader: "babel-loader",
           },
         },
         {
