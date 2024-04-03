@@ -21,6 +21,9 @@ module.exports = () => {
         filename: "index.html",
       }),
       new WebpackPwaManifest({
+        fingerprints: false,
+        inject: true,
+        id: '/',
         name: "PWA Text Editor",
         short_name: "JATE",
         description:
@@ -28,6 +31,7 @@ module.exports = () => {
         background_color: "#01579b",
         theme_color: "#ffffff",
         start_url: "/",
+        publicPath: './',
         icons: [
           {
             src: path.resolve("src/images/logo.png"),
