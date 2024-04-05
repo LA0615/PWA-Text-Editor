@@ -9,3 +9,6 @@ Please click the INSTALL button  and you will have your own app that is accessab
 Please click the link to the application and view the screenshot below. 
 
 ![Screenshot of app](<images/PWA text editor.png>)
+
+[Link to deployed application](https://pwa-text-editor-qnew.onrender.com)
+
